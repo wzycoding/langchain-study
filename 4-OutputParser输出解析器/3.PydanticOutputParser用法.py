@@ -14,14 +14,14 @@ from langchain_openai import ChatOpenAI
 # 读取env配置
 dotenv.load_dotenv()
 
-# 诗人信息
+# 诗人信息模型
 class Poetry(BaseModel):
     name: str = Field(description="古诗名字")
     content: str = Field(description="古诗内容")
     author: str = Field(description="古诗作者")
 
 
-# 诗歌信息
+# 诗歌信息模型
 class Poet(BaseModel):
     name: str = Field(description="诗人姓名")
     age: int = Field(description="诗人年龄")
