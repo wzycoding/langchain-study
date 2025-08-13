@@ -6,4 +6,4 @@
 
 欢迎关注公众号随时获取最新AI、编程干货，LangChain框架入门系列专栏正在持续更新中
 
-!![weixin_platform_qrcode](dist/weixin_platform_qrcode.jpg)
+![weixin_platform_qrcode](dist/weixin_platform_qrcode.jpg)
