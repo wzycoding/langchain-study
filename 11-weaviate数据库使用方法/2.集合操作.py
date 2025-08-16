@@ -72,13 +72,13 @@ database = client.collections.get("Database")
 # print(data_object.vector["default"])
 
 # 5.查询所有对象
-collection = client.collections.get("Database")
-
-for item in collection.iterator(
-        include_vector=True
-):
-    print(item.properties)
-    print(item.vector)
+# collection = client.collections.get("Database")
+#
+# for item in collection.iterator(
+#         include_vector=True
+# ):
+#     print(item.properties)
+#     print(item.vector)
 
 # 6.更新对象信息
 # database = client.collections.get("Database")
@@ -115,6 +115,6 @@ for item in collection.iterator(
 # )
 
 # 删除集合
-# client.collections.delete(
-#     "Database"
-# )
+client.collections.delete(
+    "Database"
+)
