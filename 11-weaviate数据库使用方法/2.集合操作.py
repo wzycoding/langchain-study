@@ -116,5 +116,5 @@ database = client.collections.get("Database")
 
 # 删除集合
 client.collections.delete(
-    "Database"
+    "Product"
 )
