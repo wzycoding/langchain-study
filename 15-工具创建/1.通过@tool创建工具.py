@@ -3,7 +3,7 @@
 """
 @Time   : 2025/8/19 
 @Author : wzy
-@File   : 1.函数方式创建工具
+@File   : 1.通过函数方式创建工具
 """
 from langchain_core.tools import tool
 from pydantic.v1 import Field, BaseModel
