@@ -19,9 +19,9 @@ underlying_embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 # 2.创建CacheBackedEmbeddings对象
 cache_embeddings = CacheBackedEmbeddings.from_bytes_store(underlying_embeddings=underlying_embeddings,
-                                                          document_embedding_cache=LocalFileStore("./document_cache/"),
+                                                          document_embedding_cache=LocalFileStore("document_cache/"),
                                                           namespace=underlying_embeddings.model,
-                                                          query_embedding_cache=LocalFileStore("./query_cache/"))
+                                                          query_embedding_cache=LocalFileStore("query_cache/"))
 
 texts = [
     "北宋著名文学家、书法家、画家，历史治水名人。与父苏洵、弟苏辙三人并称“三苏”。苏轼是北宋中期文坛领袖，在诗、词、散文、书、画等方面取得很高成就。",
