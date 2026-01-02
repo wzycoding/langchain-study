@@ -13,7 +13,7 @@ import dotenv
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import AnyMessage, ToolMessage, HumanMessage
 from langchain_core.tools import tool
-from langgraph.constants import END
+from langgraph.constants import END, START
 from langgraph.graph import StateGraph
 
 dotenv.load_dotenv()
@@ -123,7 +123,7 @@ graph = StateGraph(MessagesState)
 graph.add_node("llm", llm_node)
 graph.add_node("tool", tool_node)
 
-graph.set_entry_point("llm")
+graph.add_edge(START, "llm")
 graph.add_conditional_edges("llm", llm_tool_route, ["tool", END])
 graph.add_edge("tool", "llm")
 
