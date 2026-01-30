@@ -26,7 +26,7 @@ llm = init_chat_model(
 
 
 @tool
-def add_tow_numbers(a: int, b: int) -> int:
+def add_two_numbers(a: int, b: int) -> int:
     """两个数相加 `a` 和 `b`.
 
     Args:
@@ -37,18 +37,18 @@ def add_tow_numbers(a: int, b: int) -> int:
 
 
 @tool
-def sub_tow_numbers(a: int, b: int) -> int:
+def sub_two_numbers(a: int, b: int) -> int:
     """两个数相减 `a` 和 `b`.
 
     Args:
         a: 第一个整数
         b: 第二个整数
     """
-    return a + b
+    return a - b
 
 
 @tool
-def multi_tow_numbers(a: int, b: int) -> int:
+def multi_two_numbers(a: int, b: int) -> int:
     """两个数相乘 `a` 和 `b`.
 
     Args:
@@ -59,7 +59,7 @@ def multi_tow_numbers(a: int, b: int) -> int:
 
 
 @tool
-def divide_tow_numbers(a: int, b: int) -> int:
+def divide_two_numbers(a: int, b: int) -> int:
     """两个数相除 `a` 和 `b`.
 
     Args:
@@ -70,7 +70,7 @@ def divide_tow_numbers(a: int, b: int) -> int:
 
 
 # 2.将工具绑定到LLM
-tools = [add_tow_numbers, sub_tow_numbers, multi_tow_numbers, divide_tow_numbers]
+tools = [add_two_numbers, sub_two_numbers, multi_two_numbers, divide_two_numbers]
 llm_with_tool = llm.bind_tools(tools)
 
 # 3.生成工具名称->工具对象的映射
@@ -109,7 +109,7 @@ def tool_node(state: MessagesState):
 
 
 # 7.条件边路由函数
-def llm_tool_route(state: MessagesState) -> Literal["tool_node", END]:
+def llm_tool_route(state: MessagesState) -> Literal["tool", END]:
     """工具调用和LLM调用的边路由"""
     if state["messages"][-1].tool_calls:
         return "tool"
