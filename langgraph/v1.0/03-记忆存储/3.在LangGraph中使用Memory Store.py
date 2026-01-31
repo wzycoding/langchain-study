@@ -81,7 +81,7 @@ def save_memory_node(
     user_id = config["configurable"]["user_id"]
     namespace = ("chat_history", user_id)
 
-    # 1.保存AIMessage
+    # 5.1 保存AIMessage
     for message in state["messages"]:
         store.put(
             namespace,
