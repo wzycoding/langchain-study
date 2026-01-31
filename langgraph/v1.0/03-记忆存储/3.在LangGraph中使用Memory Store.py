@@ -72,7 +72,7 @@ def llm_node(state: MessagesState, config: RunnableConfig, store: BaseStore):
     return {"messages": [ai_message]}
 
 
-# 4.定义存储记忆节点
+# 5.定义存储记忆节点
 def save_memory_node(
         state: MessagesState,
         config: RunnableConfig,
@@ -95,7 +95,7 @@ def save_memory_node(
     return {}
 
 
-# 5.构建图
+# 6.构建图
 graph = StateGraph(MessagesState)
 
 graph.add_node("load_memory", load_memory_node)
@@ -107,7 +107,7 @@ graph.add_edge("load_memory", "llm")
 graph.add_edge("llm", "save_memory")
 graph.add_edge("save_memory", END)
 
-# 6.编译并运行图
+# 7.编译并运行图
 in_memory_store = InMemoryStore()
 agent = graph.compile(store=in_memory_store)
 
