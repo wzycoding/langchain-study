@@ -55,6 +55,7 @@ print("================图执行结束=================")
 
 # 8.获取历史图状态信息
 history_states = list(agent.get_state_history(config))
+# 例如，要回放到 a_node 执行后的状态（历史列表中索引为1的检查点）
 target_checkpoint_index = 1
 target_state = history_states[target_checkpoint_index]
 
