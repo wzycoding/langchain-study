@@ -12,7 +12,7 @@ from typing import TypedDict, Annotated
 
 import dotenv
 from langchain.chat_models import init_chat_model
-from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage
+from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage, AIMessage
 from langchain_core.runnables import RunnableConfig
 from langgraph.constants import END, START
 from langgraph.graph import StateGraph
@@ -83,14 +83,15 @@ def save_memory_node(
 
     # 5.1 保存AIMessage
     for message in state["messages"]:
-        store.put(
-            namespace,
-            str(uuid.uuid4()),
-            {
-                "role": message.type,
-                "content": message.content
-            }
-        )
+        if isinstance(message, AIMessage):
+            store.put(
+                namespace,
+                str(uuid.uuid4()),
+                {
+                    "role": message.type,
+                    "content": message.content
+                }
+            )
 
     return {}
 
