@@ -68,7 +68,7 @@ checkpointer.setup()
 # 7.编译并运行图
 agent = graph.compile(checkpointer=checkpointer)
 config = {"configurable": {"thread_id": "1"}}
-result = agent.invoke({"pay_amount": "6000", "receiving_company": "大米科技有限公司"}, config)
+result = agent.invoke({"pay_amount": 6000, "receiving_company": "大米科技有限公司"}, config)
 
 # 8.输出中断后返回内容
 print(result)

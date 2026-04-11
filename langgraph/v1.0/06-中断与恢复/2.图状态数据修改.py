@@ -66,7 +66,7 @@ checkpointer.setup()
 
 # 8.编译并运行图
 agent = graph.compile(checkpointer=checkpointer)
-config = {"configurable": {"thread_id": "1"}}
+config = {"configurable": {"thread_id": "101"}}
 result = agent.invoke(
     {"messages": [HumanMessage(content="写一封邮件给Bob，通知已经给Bob打款10000元货款，邮件格式保持正式信件格式")]},
     config)
