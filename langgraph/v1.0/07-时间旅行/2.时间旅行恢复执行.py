@@ -44,7 +44,7 @@ def generate_question_node(state: State):
 # 4.定义生成答案节点
 def generate_answer_node(state: State):
     """生成答案节点"""
-    ai_message = llm.invoke(f"生成这个问题的答案：{state['question']}，并且给出简单详细的解释。")
+    ai_message = llm.invoke(f"生成这个问题的答案：{state['question']}，并且给出清晰易懂的解释。")
     print("======执行generate_answer_node=======")
     return {"answer": ai_message.content}
 
