@@ -1,0 +1,37 @@
+#!/user/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Time   : 2026/6/9 
+@Author : wzy
+@File   : 2.8 获取执行信息
+"""
+import dotenv
+from langchain.agents import create_agent
+from langchain.messages import HumanMessage
+from langchain.tools import tool, ToolRuntime
+
+dotenv.load_dotenv()
+
+
+# 1.定义工具
+@tool
+def search_weather(runtime: ToolRuntime, city: str):
+    """查询今日天气"""
+    info = runtime.execution_info
+
+    print(f"线程id: {info.thread_id}")
+    print(f"重试次数: {info.node_attempt}")
+    return f"今日{city}天气晴，东风4级，体感舒适"
+
+
+# 2.创建Agent
+agent = create_agent(model="deepseek-v4-flash",
+                     system_prompt="你是一个专门为程序员工作的AI助手",
+                     tools=[search_weather])
+
+# 3.调用Agent
+state = agent.invoke({
+    "messages": [
+        HumanMessage("今天杭州天气")
+    ]
+}, config={"configurable": {"thread_id": "1234"}},)
